@@ -12,38 +12,38 @@
 
 <body>
     <h1>Kanban Board</h1>
-    <div ng-controller='kanbanListController as todoCtrl'>
-        <form ng-submit="todoCtrl.addTodo()">
+    <div ng-controller='kanbanListController as kanbanCtrl'>
+        <form ng-submit="kanbanCtrl.addTodo()">
             <h3>Ingresa tu tarea pendiente</h3>
-            <input type="text" ng-model="todoCtrl.newTodo" placeholder="Titulo de la tarea">
-            <input type="text" ng-model="todoCtrl.newTodoDesc" placeholder="Descripcion de la tarea">
+            <input type="text" ng-model="kanbanCtrl.newTodo" placeholder="Titulo de la tarea">
+            <input type="text" ng-model="kanbanCtrl.newTodoDesc" placeholder="Descripcion de la tarea">
             <input type="submit" value="Guardar">
         </form>
 
         <h2>TODO</h2>
         <ul>
-            <li ng-repeat="todoElement in todoCtrl.kanbanList | filter : {paso : 1}">
+            <li ng-repeat="todoElement in kanbanCtrl.kanbanList | filter : {paso : 1}">
                 <span>{{todoElement.titulo}}</span>
-                <p>{{todoElement.desc}}</p> <input type="submit" value="-->" ng-click="todoCtrl.mover(todoElement, 2)">
+                <p>{{todoElement.desc}}</p> <input type="submit" value="-->" ng-click="kanbanCtrl.mover(todoElement, 2)">
             </li>
         </ul>
         <h2>DOING</h2>
         <ul>
-            <li ng-repeat="todoElement in todoCtrl.kanbanList | filter : {paso : 2}">
+            <li ng-repeat="todoElement in kanbanCtrl.kanbanList | filter : {paso : 2}">
                 <span>{{todoElement.titulo}}</span>
                 <p>{{todoElement.desc}}</p>
-                <input type="submit" value="<--" ng-click="todoCtrl.mover(todoElement, 1)">
-                <input type="submit" value="-->" ng-click="todoCtrl.mover(todoElement, 3)">
+                <input type="submit" value="<--" ng-click="kanbanCtrl.mover(todoElement, 1)">
+                <input type="submit" value="-->" ng-click="kanbanCtrl.mover(todoElement, 3)">
             </li>
         </ul>
         <h2>DONE</h2>
         <ul>
-            <li ng-repeat="todoElement in todoCtrl.kanbanList | filter : {paso : 3}">
+            <li ng-repeat="todoElement in kanbanCtrl.kanbanList | filter : {paso : 3}">
                 <span>{{todoElement.titulo}}</span>
                 <p>{{todoElement.desc}}</p>
             </li>
         </ul>
-        <p>{{todoCtrl.kanbanList}}</p>
+        <p>{{kanbanCtrl.kanbanList}}</p>
     </div>
 </body>
 
